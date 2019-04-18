@@ -43,5 +43,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-
 export default connect(mapStateToProps, { fetchStream, editStream })(StreamEdit)

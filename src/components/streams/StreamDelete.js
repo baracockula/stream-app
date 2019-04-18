@@ -3,9 +3,7 @@ import { connect } from "react-redux"
 
 import Modal from "../Modal"
 import history from "../../history"
-import { fetchStream } from "../../actions"
-
-
+import { fetchStream, deleteStream } from "../../actions"
 
 
 class StreamDelete extends Component {
@@ -21,11 +19,14 @@ class StreamDelete extends Component {
     history.push("/")
   }
 
+  onDelete = (streamId) => {
+    this.props.deleteStream(this.props.match.params.id)
+  }
 
   renderActions = () => {
     return (
       <div>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" data-dismiss={this.onDelete ? "modal" : null} onClick={this.onDelete}>Delete</button>
         <button className="btn btn-light" data-dismiss="modal" onClick={this.onDismiss}>Cancel</button>
       </div>
     )
@@ -51,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchStream })(StreamDelete)
+export default connect(mapStateToProps, { fetchStream, deleteStream })(StreamDelete)
 
 
 

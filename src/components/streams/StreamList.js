@@ -15,10 +15,12 @@ class StreamList extends Component {
     return (
       this.props.streams.map(stream => (
 
-        <div className="container media border border-dark mb-1 d-flex align-items-center" key={stream.id}>
+        <div className="container media border border-dark mb-1 d-flex align-items-center" key={stream.id} >
           <Octicon className="mr-3 align-self-center" icon={Play} size='large' />
           <div className="media-body">
-            <h5>{stream.title}</h5>
+            <Link to={`/stream/${stream.id}`}>
+              <h5>{stream.title}</h5>
+            </Link>
             <p>{stream.description}</p>
           </div>
           {this.props.currentUserId === stream.userId ? (
